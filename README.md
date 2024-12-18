@@ -7,4 +7,4 @@ Hacked together:
 
 Result: it works. At least: sabnzbd is downloading. 
 
-Question: is this version faster (in case the CPU single-core is the bottleneck)
+Question: is this version faster (in case the CPU single-core is the bottleneck)?
