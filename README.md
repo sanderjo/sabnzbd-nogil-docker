@@ -13,4 +13,4 @@ Question: is this version faster (in case the CPU single-core is the bottleneck)
 
 # Notes
 
-Does not work on riscv64 because deadsnakes does not suppor riscv64
+Does not work on riscv64 because deadsnakes does not support riscv64
