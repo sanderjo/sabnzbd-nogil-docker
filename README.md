@@ -19,6 +19,14 @@ docker build -t sabnzbd-nogil .
 
 # run docker
 
+Lazy, for testing
+
+```
+mkdir ~/sab-config
+docker run -p 8080:8080 -v ~/sab-config:/config sabnzbd-nogil
+```
+More directories specified (but also needed within SAB's GUI)
+
 ```
 docker run -p 8080:8080 -v ~/sab-config:/config -v ~/sab-download:/downloads -v ~/sab-incomplete:/incomplete-downloads sabnzbd-nogil
 ```
