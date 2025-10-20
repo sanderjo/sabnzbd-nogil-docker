@@ -2,8 +2,8 @@
 docker with SABnzbd with python3.14 with No GIL (nogil)
 
 Hacked together:
-- python3 module cryptography removed
-- override sabctools non-compliancy from commandline
+- python3 module orjson commented out
+- use `-Xgil=0` to override warning about non-compliant modules
 
 Result: it works. At least: sabnzbd is downloading. 
 
