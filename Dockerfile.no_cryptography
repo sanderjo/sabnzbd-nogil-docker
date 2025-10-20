@@ -25,7 +25,7 @@ RUN apt install unrar -y
 # par2cmdline-turbo
 RUN add-apt-repository ppa:jcfp/sab-addons && \
 	apt update && \
-	apt install par2-turbo patch -y
+	apt install par2-turbo
 
 
 # prepare for sabnzbd and its modules (sabctools resp cffi)
@@ -37,18 +37,14 @@ RUN apt install g++ libffi-dev -y
 RUN apt install git -y
 RUN cd / && git clone https://github.com/sabnzbd/sabnzbd.git && \
 	cd sabnzbd/ && \
+	sed -i -e 's/^crypto/#crypto/' requirements.txt && \
 	sed -i -e 's/^orjson/#orjson/' requirements.txt && \
 	python3.14-nogil -m pip install -r requirements.txt -U && \
-	tools/make_mo.py
-	
-# now patch SABnzbd.py
-# copy patch from outside source directory
-COPY Sabnzbd-GIL-logging-changes.patch /tmp/Sabnzbd-GIL-logging-changes.patch
-# Apply the patch
-RUN patch /sabnzbd/SABnzbd.py < /tmp/Sabnzbd-GIL-logging-changes.patch
+	tools/make_mo.py && \
+	sed -i -e 's/import cryptography/#import cryptography/' SABnzbd.py && \
+	sed -i -e 's/cryptography.__version__/None/' SABnzbd.py
 
-
-CMD env LANG=en_US.UTF-8 PYTHON_GIL=0  python3.14-nogil  -Xgil=0  /sabnzbd/SABnzbd.py -l2 -b0 --server 0.0.0.0:8080
+CMD env LANG=en_US.UTF-8 python3.14-nogil  -Xgil=0  /sabnzbd/SABnzbd.py -b0 --server 0.0.0.0:8080
 
 RUN echo 'Hi, I am in your container'
 

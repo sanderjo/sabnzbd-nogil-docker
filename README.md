@@ -1,5 +1,5 @@
 # sabnzbd-nogil-docker
-docker with SABnzbd with python3.13 with No GIL (nogil)
+docker with SABnzbd with python3.14 with No GIL (nogil)
 
 Hacked together:
 - python3 module cryptography removed

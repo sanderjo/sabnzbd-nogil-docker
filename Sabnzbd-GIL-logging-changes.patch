@@ -1,0 +1,16 @@
+*** SABnzbd.py.ORG	2025-10-20 22:45:31.536782976 +0200
+--- SABnzbd.py.GIL-logging	2025-10-20 22:49:06.736821319 +0200
+***************
+*** 1135,1140 ****
+--- 1135,1145 ----
+      logging.info("%s-%s", sabnzbd.MY_NAME, sabnzbd.__version__)
+      logging.info("Full executable path = %s", sabnzbd.MY_FULLNAME)
+      logging.info("Arguments = %s", sabnzbd.CMDLINE)
++     logging.info(f"python version {sys.version}")
++     try:
++         logging.info(f"GIL is {'on (safe)' if sys._is_gil_enabled() else 'off (unsafe)'}")
++     except:
++         logging.info("GIL is on (safe) as standard for older python version")
+  
+      # Load (extra) certificates if supplied by certifi
+      # This is optional and provided in the binaries
