@@ -38,6 +38,13 @@ Add the below to get ipv6 etc:
 --net=host --restart unless-stopped -d
 ```
 
+Your logging should show:
+```
+2025-10-20 21:33:39,869::INFO::[SABnzbd:1138] python version 3.14.0 free-threading build (main, Oct  7 2025, 16:05:28) [GCC 13.3.0]
+2025-10-20 21:33:39,870::INFO::[SABnzbd:1140] GIL is off (unsafe)
+```
+
+
 # Notes
 
 Does not work on riscv64 because deadsnakes does not support riscv64
